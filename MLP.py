@@ -27,19 +27,12 @@ def multi_layer_nn(X_train,Y_train,X_test,Y_test,layers,alpha,epochs,h=0.00001,s
     errors = []
 
     # Initialize weights for each layer
-    # print("layers", layers)
     for i in range(len(layers)):
         np.random.seed(seed)
         if i == 0:
             weights.append(np.random.randn(layers[i], X_train.shape[0] + 1))
         else:
             weights.append(np.random.randn(layers[i], layers[i-1] + 1))
-    # print("X_train", X_train.shape)
-    # print("Y_train",Y_train.shape)
-    # print("X_test", X_test.shape)
-    # print("Y_test",Y_test.shape)
-    # print("epochs", epochs)
-    # print("weights", weights)
     
     for epoch in range(epochs):
         # Iterate over training samples
@@ -95,12 +88,7 @@ def multi_layer_nn(X_train,Y_train,X_test,Y_test,layers,alpha,epochs,h=0.00001,s
         outputs_final.append(outputs)
 
     outputs_final = np.array(outputs_final).T
-    # print("weights final", weights)
-    # print("errors_final",errors_final)
-    # print("outputs_final",outputs_final,outputs_final.shape)
-    # print("Y_test",Y_test,Y_test.shape)
     return weights, errors_final, outputs_final
-
 
 # Instruction
 # This function creates and trains a multi-layer neural Network
